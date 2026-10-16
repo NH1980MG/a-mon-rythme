@@ -1,0 +1,7 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.superpowers/
+node_modules/
+supabase-auth-setup.jpg

@@ -345,8 +345,8 @@ function goalById(id){return state.goals.find(g=>g.id===id);}
 function render(){
  for(const name of ['calendar','goals']){const height=$('#'+name+'-panel')?.style?.height;if(height)panelHeights[name]=height;}
  const oldScroll=$('#view').querySelector?.('.timetable-scroll'),scrollPosition=oldScroll?{top:oldScroll.scrollTop,left:oldScroll.scrollLeft}:null;
- const focused=document.activeElement,keys=['action','id','date','goal','mode','tab','theme','category'];const scope=el=>el.closest?.('.priority-box')?'priorities':el.closest?.('.goal-card')?'card':'';
- const focusScope=focused?scope(focused):'',focusKey=focused?.dataset?.action?Object.fromEntries(keys.map(k=>[k,focused.dataset[k]])):null,focusId=['grouping','show-done'].includes(focused?.id)?focused.id:null;
+ const focused=document.activeElement,keys=['action','id','date','goal','mode','tab','theme','category','panel'];const scope=el=>el.closest?.('.priority-box')?'priorities':el.closest?.('.goal-card')?'card':'';
+ const focusScope=focused?scope(focused):'',focusKey=focused?.dataset?.action?Object.fromEntries(keys.map(k=>[k,focused.dataset[k]])):null,focusId=['grouping','show-done','panel-width'].includes(focused?.id)?focused.id:null;
  document.body.dataset.theme=state.theme;document.body.classList.toggle('selecting-period',!!rangeMode);
  document.querySelectorAll('[data-action="tab"]').forEach(b=>{b.classList.toggle('active',b.dataset.tab===tab);b.setAttribute('aria-current',b.dataset.tab===tab?'page':'false');});
  document.querySelectorAll('[data-action="theme"]').forEach(b=>{b.classList.toggle('active',b.dataset.theme===state.theme);b.setAttribute('aria-pressed',String(b.dataset.theme===state.theme));});

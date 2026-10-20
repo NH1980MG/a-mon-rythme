@@ -1,8 +1,8 @@
 # À mon rythme
 
-[Ouvrir le site](https://nh1980mg.github.io/a-mon-rythme/)
+[Ouvrir le site public](https://nh1980mg.github.io/a-mon-rythme/) · [Code sur GitHub](https://github.com/NH1980MG/a-mon-rythme)
 
-Objectifs, habitudes et calendrier personnel, sans compte requis. Les données restent dans le navigateur de chaque personne. La connexion Google/Discord n’est pas encore intégrée.
+Le mode sans compte conserve les données dans le navigateur de chaque personne. Le panneau **Mon compte** permet de se connecter avec Google ou Discord pour utiliser la sauvegarde personnelle Supabase. Pour retrouver une sauvegarde du fichier local sur le site, exporte-la puis importe-la sur le site ; aucune copie vers un compte ne se fait automatiquement.
 
 Ouvre **index.html** par double-clic dans ton navigateur (Safari, Firefox, Chrome ou Edge). Aucun serveur, compte ou téléchargement supplémentaire n'est nécessaire. Si le fichier est déjà ouvert, recharge l'onglet pour afficher cette version.
 
@@ -92,8 +92,25 @@ La version précédente est migrée automatiquement : ses anciennes plages devie
 
 Si le stockage local est bloqué, l'application permet de travailler en mémoire et d'exporter les données ; un avertissement indique qu'elles ne sont pas sauvegardées entre les ouvertures.
 
+## Projet Supabase — comptes utilisateurs
+
+Le projet **À mon rythme** a été créé dans **NH1980MG's Org**, sur l'offre gratuite et en région **Canada Central (`ca-central-1`)**.
+
+- Tableau de bord : https://supabase.com/dashboard/project/gsfwvaeyrufppausqdnr
+- Identifiant du projet : `gsfwvaeyrufppausqdnr`.
+- L'inscription par e-mail est activée, avec confirmation de l'adresse avant la première connexion.
+- La protection automatique RLS est activée ; l'exposition automatique des nouvelles tables est désactivée.
+
+Le code du dépôt contient maintenant le panneau **Mon compte**, les boutons Google/Discord et la synchronisation privée. La table `user_workspaces` est créée avec des règles limitant chaque utilisateur à ses propres données. Une révision protège les sauvegardes contre les écrasements simultanés.
+
+**Google et Discord sont activés dans Supabase.** L’adresse de retour est `https://nh1980mg.github.io/a-mon-rythme/`. L’activation des fournisseurs ne remplace pas la validation d’une connexion réelle ; Google peut également limiter l’accès aux utilisateurs test selon l’état de publication du client OAuth. [Configuration et validation Google/Discord](docs/oauth-setup.md).
+
+Le mode sans compte reste disponible. Ses données ne sont jamais transférées automatiquement : un compte vide propose de les copier explicitement. Les données des comptes utilisent un cache séparé ; une déconnexion restaure l'espace sans compte. Un conflit conserve les modifications locales et propose de les exporter ou de recharger la version distante. Une erreur réseau ne signifie jamais que la synchronisation a réussi.
+
+L'ouverture directe de `index.html` conserve le mode local ; les connexions demandent l'adresse web officielle. Le SDK officiel est fourni dans `vendor/supabase.js`, à la version fixe **2.118.0** ; `package-lock.json` conserve ses dépendances. Pour le remettre à jour intentionnellement : installer la version exacte, copier son bundle UMD et sa licence dans `vendor/`, puis rejouer les tests. Aucun mot de passe ni clé secrète n'est enregistré dans ce dépôt ; la clé publiable du projet n'est pas un secret.
+
 ## Vérification du code
 
-Avec Node.js : `node --test tests/*.test.cjs`.
+Avec Node.js : `node --test tests/*.test.cjs` (ou `npm test`). Les tests de comptes couvrent les réponses tardives, conflits, copies invitées, imports et erreurs de stockage/session. `tests/comptes-access.sql` vérifie réellement les accès Postgres dans une transaction annulée ; ne pas confondre ce test distant avec les simulations JavaScript.
 
 Les tests exécutent la logique métier et les gestionnaires d'événements réels dans un environnement JavaScript simulé, notamment migration, sauvegarde, périodes, rectangle souris, brouillon, séances, descriptions, historique, bilans, études, habitudes, récurrence, occurrences personnalisées, compteurs, thèmes et contrastes calculés. Ils ne remplacent pas une vérification visuelle ni un essai de glissement natif dans un navigateur.

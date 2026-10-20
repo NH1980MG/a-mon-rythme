@@ -1,0 +1,6 @@
+{
+  "name": "a-mon-rythme",
+  "private": true,
+  "scripts": {"test": "node --test tests/*.test.cjs"},
+  "dependencies": {"@supabase/supabase-js": "2.118.0"}
+}

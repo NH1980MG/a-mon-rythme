@@ -151,6 +151,8 @@ body[data-theme=colorful] .habit-card button:focus-visible{outline-color:var(--c
 
 /* Identité À mon rythme : le même symbole reste lisible dans les deux ambiances. */
 .brand-mark{background:transparent!important;border-radius:0;width:42px;height:42px;flex-shrink:0}.brand-mark .rhythm-logo{width:42px;height:42px;stroke:none;display:block}.brand-mark .rhythm-logo path{fill:none}@media(max-width:480px){.brand-mark,.brand-mark .rhythm-logo{width:34px;height:34px}}
+
+.account-options{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.account-options .btn{flex:1 1 180px}#account-button{white-space:nowrap}#save-status{max-width:175px}
 </style>
 </head>
 <body>
@@ -158,11 +160,11 @@ body[data-theme=colorful] .habit-card button:focus-visible{outline-color:var(--c
 <div class="app">
 <header class="topbar"><div class="brand"><span class="brand-mark" aria-hidden="true"><svg class="rhythm-logo" viewBox="0 0 64 64"><rect width="64" height="64" rx="19" fill="#243b6b"/><path d="M39 31c0 8-5 14-13 14S13 39 13 31s5-14 13-14 13 6 13 14v12c0 5 3 8 8 8" fill="none" stroke="#ffd43b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="15" r="4" fill="#fff4dc"/><circle cx="53" cy="25" r="2.5" fill="#ffd43b"/></svg></span><div><strong>À mon rythme</strong><small>Un peu, chaque jour.</small></div></div>
 <nav aria-label="Navigation principale"><button class="nav-btn active" data-action="tab" data-tab="goals">▦ &nbsp; Mes objectifs</button><button class="nav-btn" data-action="tab" data-tab="tags">⌑ &nbsp; Étiquettes</button><button class="nav-btn" data-action="tab" data-tab="groups">◉ &nbsp; Groupes</button><button class="nav-btn" data-action="tab" data-tab="history">↺ &nbsp; Historique</button><button class="nav-btn" data-action="tab" data-tab="studies">✧ &nbsp; Études & techniques</button><button class="nav-btn" data-action="tab" data-tab="habits">↻ &nbsp; Habitudes</button></nav>
-<div class="toolbar"><div class="segmented theme-switch" aria-label="Ambiance graphique"><button data-action="theme" data-theme="soft" aria-pressed="true">Doux</button><button data-action="theme" data-theme="colorful" aria-pressed="false">Coloré</button></div><span class="saved" id="save-status"><i></i> Enregistré ici</span><button class="icon-btn" data-action="export" title="Exporter une sauvegarde" aria-label="Exporter une sauvegarde"><svg viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"/></svg></button><button class="icon-btn" data-action="import" title="Importer une sauvegarde" aria-label="Importer une sauvegarde"><svg viewBox="0 0 24 24"><path d="M12 15V3m-4 4 4-4 4 4M5 16v5h14v-5"/></svg></button><button class="icon-btn" data-action="help" aria-label="Mode d’emploi" title="Mode d’emploi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4 2l-1.5 1v1m0 3h.01"/></svg></button></div></header>
+<div class="toolbar"><button class="btn small quiet" data-action="account" id="account-button">Mon compte</button><div class="segmented theme-switch" aria-label="Ambiance graphique"><button data-action="theme" data-theme="soft" aria-pressed="true">Doux</button><button data-action="theme" data-theme="colorful" aria-pressed="false">Coloré</button></div><span class="saved" id="save-status"><i></i> Enregistré ici</span><button class="icon-btn" data-action="export" title="Exporter une sauvegarde" aria-label="Exporter une sauvegarde"><svg viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"/></svg></button><button class="icon-btn" data-action="import" title="Importer une sauvegarde" aria-label="Importer une sauvegarde"><svg viewBox="0 0 24 24"><path d="M12 15V3m-4 4 4-4 4 4M5 16v5h14v-5"/></svg></button><button class="icon-btn" data-action="help" aria-label="Mode d’emploi" title="Mode d’emploi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4 2l-1.5 1v1m0 3h.01"/></svg></button></div></header>
 <main id="main"><section class="hero"><div><p class="eyebrow" id="today-label"></p><h1>Faire de la place<br>à ce qui <em>compte.</em></h1><p class="sub">Des objectifs clairs. Des petits pas. Un calendrier qui te ressemble.</p></div><button class="btn primary" data-action="new-goal"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Nouvel objectif</button></section>
 <div id="storage-warning" class="notice" role="status" hidden>La sauvegarde dans ce navigateur est indisponible. Tes données restent accessibles pendant cette ouverture : utilise le bouton Exporter pour les conserver.</div>
 <div id="view"></div></main>
-<footer class="footer"><span><svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 5 8 9 8 9s8-4 8-9V7Z"/><path d="m9 12 2 2 4-4"/></svg>Ton espace personnel, conservé dans ce navigateur.</span><span>Avancer, à ta façon. ↗</span></footer>
+<footer class="footer"><span id="privacy-status"><svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 5 8 9 8 9s8-4 8-9V7Z"/><path d="m9 12 2 2 4-4"/></svg>Ton espace personnel, conservé dans ce navigateur.</span><span>Avancer, à ta façon. ↗</span></footer>
 </div>
 <div id="range-shade" class="range-shade" data-action="cancel-range" aria-hidden="true" hidden></div><div id="selection-rectangle" class="selection-rectangle" aria-hidden="true" hidden></div><section id="session-drawer" class="session-drawer" aria-label="Séances de l’objectif" hidden></section>
 <dialog id="modal" aria-labelledby="modal-title"></dialog><div id="toast" class="toast" role="status" hidden></div><span id="timetable-live" class="sr-only" role="status" aria-live="polite"></span><div id="calendar-context-menu" class="calendar-context-menu" role="menu" aria-label="Actions du calendrier" hidden></div><input id="import-file" type="file" accept="application/json,.json" hidden>
@@ -319,6 +321,8 @@ const rangeLabel=h=>!h?'Aucune période':h.start===h.end?fmt(h.start,{day:'numer
 const horizonLabel=h=>h?fmt(h,{day:'numeric',month:'short',year:'numeric'}):'Long terme';
 const base=()=>({version:2,theme:'soft',groups:[{id:'etudes',name:'Études',color:'#547e9b'},{id:'perso',name:'Personnel',color:'#69825a'},{id:'creation',name:'Création',color:'#b47b59'}],tags:[{id:'tech',name:'Technologie'},{id:'devoir',name:'Devoir'}],goals:[],sessions:[],habitGroups:[]});
 let state=base(),storage=null,loadIssue='',saveBlocked=false;
+let accountSink=null,accountLocked=false,accountIdentity='',accountEpoch=0;
+let guestDataForAccounts=null;
 function backupLegacy(raw){if(storage&&JSON.parse(raw).version===1&&!storage.getItem(KEY+'-backup-v1'))storage.setItem(KEY+'-backup-v1',raw);}
 try{storage=window.localStorage;const raw=storage.getItem(KEY);if(raw){state=Core.validateImport(JSON.parse(raw));backupLegacy(raw);}}catch(err){saveBlocked=true;loadIssue='La sauvegarde locale n’a pas pu être lue ou copiée. Elle n’a pas été remplacée. Les données de cette ouverture peuvent être exportées.';}
 let tab='goals',calendarView='month',anchor=today(),selectedDay=today(),grouping='group',showDone=false,rangeMode=null,dragData=null,drawerGoal=null,pointerDrag=null,suppressClick=false;
@@ -327,7 +331,7 @@ let habitEditorId=null,placement=null,timetableGesture=null,contextMenu=null;
 let placementTool={kind:'slot',label:'Nouvelle habitude',duration:30,time:'09:00',color:'#243b6b'};
 let toastTimer;const modal=$('#modal');
 function toast(message){$('#toast').textContent=message;$('#toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,5000);}
-function save(){const ok=!!(storage&&!saveBlocked&&Core.persist(storage,KEY,state));$('#storage-warning').hidden=ok;$('#save-status').innerHTML=ok?'<i></i> Enregistré ici':'À exporter';return ok;}
+function save(){if(accountSink){try{accountSink(state);return true;}catch(err){toast(err.message);return false;}}const ok=!!(storage&&!saveBlocked&&Core.persist(storage,KEY,state));$('#storage-warning').hidden=ok;$('#save-status').innerHTML=ok?'<i></i> Enregistré ici':'À exporter';return ok;}
 function commit(message){save();render();if(message)toast(message);}
 function groupOf(g){return state.groups.find(x=>x.id===g?.groupId)||{name:'Sans groupe',color:'#7b8270'};}
 function colorStyle(g){const c=groupOf(g).color,t=Core.colorTokens(c);return `--color:${c};--text-color:${t.accent};--tint:${t.soft};--card-color:${t.tint};--card-ink:${t.ink}`;}
@@ -343,7 +347,8 @@ function render(){
  $('#view').innerHTML=tab==='goals'?workspace():tab==='history'?historyPanel():tab==='studies'?studiesPanel():tab==='habits'?(habitEditorId?habitEditor(habitEditorId):habitsPanel()):management();
  const newScroll=$('#view').querySelector?.('.timetable-scroll');if(newScroll){newScroll.scrollTop=scrollPosition?.top??420;newScroll.scrollLeft=scrollPosition?.left??0;}
  $('#range-shade').hidden=!rangeMode;
- document.querySelectorAll('.topbar,.hero,aside,.footer').forEach(el=>{el.inert=!!rangeMode;});
+ $('#view').inert=accountLocked;$('.hero').inert=accountLocked||!!rangeMode;
+ document.querySelectorAll('.topbar,.hero,aside,.footer').forEach(el=>{el.inert=!!rangeMode||(accountLocked&&el.classList?.contains?.('hero'));});
  renderDrawer();
  if(focusId)document.getElementById(focusId)?.focus({preventScroll:true});
  else if(focusKey){const next=Array.from(document.querySelectorAll('[data-action]')).find(el=>keys.every(k=>el.dataset[k]===focusKey[k])&&scope(el)===focusScope);next?.focus({preventScroll:true});}
@@ -441,6 +446,7 @@ function saveLineFields(id,fields,habitId){const scope=fields.scope;if(scope==='
 
 function management(){const groups=tab==='groups',items=groups?state.groups:state.tags;return `${groups?groupHabitPicker():''}<section class="management"><div class="manage-head"><p>${groups?'Tes grandes familles d’objectifs.<br>Une couleur pour retrouver chaque univers.':'Des étiquettes pour relier tes idées.<br>Un objectif peut en porter plusieurs, quel que soit son groupe.'}</p><button class="btn primary" data-action="${groups?'new-group':'new-tag'}">${icon('plus')}${groups?'Nouveau groupe':'Nouvelle étiquette'}</button></div><div class="manage-grid">${items.map(x=>`<article class="manage-card">${groups?`<i class="dot" style="background:${x.color}"></i>`:icon('tag')}<div class="label"><strong>${E(x.name)}</strong><small>${state.goals.filter(g=>groups?g.groupId===x.id:g.tagIds.includes(x.id)).length} objectif(s)</small></div>${iconBtn(groups?'edit-group':'edit-tag','Modifier '+x.name,x.id)}</article>`).join('')}</div>${items.length?'':'<div class="empty"><h3>À toi de les inventer.</h3><p>Crée une première '+(groups?'famille d’objectifs.':'étiquette : Technologie, Devoir, À explorer…')+'</p></div>'}</section>`;}
 function openModal(title,body,formKind='',data={}){
+ modal.dataset.accountPanel='false';
  modal.innerHTML=`<div class="modal-head"><h2 id="modal-title">${E(title)}</h2>${iconBtn('close-modal','Fermer','','close')}</div><div class="modal-body">${formKind?`<form id="edit-form" data-kind="${formKind}" data-id="${E(data.id||'')}" data-goal="${E(data.goalId||'')}" data-habit="${E(data.habitId||'')}">${body}<p class="form-error" id="form-error" role="alert" hidden></p></form>`:body}</div>`;
  if(!modal.open)modal.showModal();
  const field=modal.querySelector('input:not([type=checkbox]):not([type=color]),select');if(field)setTimeout(()=>field.focus(),40);
@@ -478,6 +484,8 @@ document.addEventListener('click',e=>{
  const b=e.target.closest('[data-action]');
  if(contextMenu&&!e.target.closest('#calendar-context-menu')&&!b?.dataset?.action?.startsWith('context-'))closeCalendarMenu();if(!b){const col=e.target.closest('[data-timetable-day]');if(col?.dataset?.timetableDay&&!rangeMode&&!suppressClick){if(tab==='habits')placementForm(col.dataset.timetableDay);else{selectedDay=col.dataset.timetableDay;render();}return;}const cell=e.target.closest('.day');if(cell&&rangeMode&&!suppressClick)dayClick(cell.dataset.date);return;}
  const {action,id}=b.dataset;
+ if(action.startsWith('account')){if(window.RythmeAccountUI)void window.RythmeAccountUI.handle(action);else toast('Le module de compte est indisponible. Recharge le site.');return;}
+ if(accountLocked&&!['export','help','close-modal'].includes(action))return;
  if(rangeMode&&!['day','apply-range','clear-range','cancel-range','calendar-view','previous','next','today'].includes(action))return;
  if(suppressClick&&['day','edit-separator'].includes(action)){suppressClick=false;return;}
  switch(action){
@@ -548,6 +556,7 @@ document.addEventListener('click',e=>{
  }
 });
 document.addEventListener('change',e=>{
+ if(accountLocked)return;
  if(['cancel-group','cancel-date','cancel-span'].includes(e.target.id))$('#cancel-preview').textContent=cancelPreview($('#cancel-group').value,$('#cancel-date').value,$('#cancel-span').value);
  if(['extension-mode','extension-count'].includes(e.target.id)){const id=$('#edit-form').dataset.id,line=lineById(id);if(line)$('#extension-preview').textContent=extensionPreview(line.date,$('#extension-mode').value,Number($('#extension-count').value));}
 
@@ -557,6 +566,7 @@ document.addEventListener('change',e=>{
  if(e.target.id==='session-goal'){const g=goalById(e.target.value);if(g){const field=$('#session-date');field.min=g.period?.start||'1900-01-01';field.max=g.period?.end||'9999-12-31';if(!Core.inPeriod(field.value,g.period))field.value=g.period.start;$('#session-period-note').textContent=g.period?'Période : '+rangeLabel(g.period):'Aucune période imposée.';}}
 });
 document.addEventListener('submit',e=>{
+ if(accountLocked){e.preventDefault();return;}
  if(e.target.id!=='edit-form')return;e.preventDefault();const f=e.target,fd=new FormData(f),id=f.dataset.id,kind=f.dataset.kind;
  try{
   if(kind==='extend-line')extendLine(id,String(fd.get('mode')),Number(fd.get('count')));
@@ -581,26 +591,26 @@ document.addEventListener('submit',e=>{
   modal.close();commit('Enregistré.');
  }catch(err){$('#form-error').textContent=err.message;$('#form-error').hidden=false;}
 });
-$('#import-file').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>5000000)throw Error('Le fichier est trop volumineux (5 Mo maximum).');const raw=await file.text(),imported=Core.validateImport(JSON.parse(raw));if(confirm('Importer cette sauvegarde et remplacer les données actuelles ? Pense à exporter une copie avant.')){let copied=true;try{backupLegacy(raw);}catch{copied=false;}state=imported;saveBlocked=!copied;loadIssue=copied?'':'Sauvegarde restaurée en mémoire. La copie locale est indisponible : exporte tes données pour les conserver.';rangeMode=null;drawerGoal=null;tab='goals';commit(copied?'Sauvegarde importée.':'Sauvegarde restaurée en mémoire, à exporter.');}}catch(err){toast(err instanceof SyntaxError?'Ce fichier ne contient pas une sauvegarde JSON valide.':err.message);}finally{e.target.value='';}});
+$('#import-file').addEventListener('change',async e=>{const importEpoch=accountEpoch;if(accountLocked)return;const file=e.target.files[0];if(!file)return;try{if(file.size>5000000)throw Error('Le fichier est trop volumineux (5 Mo maximum).');const raw=await file.text(),imported=Core.validateImport(JSON.parse(raw));if(importEpoch!==accountEpoch||accountLocked)return;if(confirm('Importer cette sauvegarde et remplacer les données actuelles ? Pense à exporter une copie avant.')){let copied=true;try{if(!accountIdentity)backupLegacy(raw);}catch{copied=false;}state=imported;saveBlocked=!copied;loadIssue=copied?'':'Sauvegarde restaurée en mémoire. La copie locale est indisponible : exporte tes données pour les conserver.';rangeMode=null;drawerGoal=null;tab='goals';commit(copied?'Sauvegarde importée.':'Sauvegarde restaurée en mémoire, à exporter.');}}catch(err){toast(err instanceof SyntaxError?'Ce fichier ne contient pas une sauvegarde JSON valide.':err.message);}finally{e.target.value='';}});
 // Native drag/drop distributes new sessions, or moves an existing calendar entry.
-document.addEventListener('dragstart',e=>{if(rangeMode){e.preventDefault();return;}const source=e.target.closest('[data-drag]');if(!source)return;dragData={type:source.dataset.drag,id:source.dataset.id,goalId:source.dataset.goal};e.dataTransfer.setData('application/x-rythme',JSON.stringify(dragData));e.dataTransfer.effectAllowed=['session','habit'].includes(dragData.type)?'move':'copy';});
-document.addEventListener('dragover',e=>{const col=e.target.closest('[data-timetable-day]');if(col?.dataset?.timetableDay&&dragData&&!rangeMode){e.preventDefault();previewTimetable(timetableTarget(col,e.clientY),col);return;}const cell=e.target.closest('.day');if(!cell||!dragData||rangeMode)return;e.preventDefault();e.dataTransfer.dropEffect=['session','habit'].includes(dragData.type)?'move':'copy';cell.classList.add('dragover');});
+document.addEventListener('dragstart',e=>{if(accountLocked){e.preventDefault();return;}if(rangeMode){e.preventDefault();return;}const source=e.target.closest('[data-drag]');if(!source)return;dragData={type:source.dataset.drag,id:source.dataset.id,goalId:source.dataset.goal};e.dataTransfer.setData('application/x-rythme',JSON.stringify(dragData));e.dataTransfer.effectAllowed=['session','habit'].includes(dragData.type)?'move':'copy';});
+document.addEventListener('dragover',e=>{if(accountLocked){e.preventDefault();return;}const col=e.target.closest('[data-timetable-day]');if(col?.dataset?.timetableDay&&dragData&&!rangeMode){e.preventDefault();previewTimetable(timetableTarget(col,e.clientY),col);return;}const cell=e.target.closest('.day');if(!cell||!dragData||rangeMode)return;e.preventDefault();e.dataTransfer.dropEffect=['session','habit'].includes(dragData.type)?'move':'copy';cell.classList.add('dragover');});
 document.addEventListener('dragleave',e=>{const cell=e.target.closest('.day');if(cell&&!cell.contains(e.relatedTarget))cell.classList.remove('dragover');});
 document.addEventListener('dragend',()=>{dragData=null;document.querySelectorAll('.dragover').forEach(el=>el.classList.remove('dragover'));});
-document.addEventListener('drop',e=>{if(timetableDrop(e))return;const cell=e.target.closest('.day');if(!cell||!dragData||rangeMode)return;e.preventDefault();const data=dragData;dragData=null;cell.classList.remove('dragover');const date=cell.dataset.date;
+document.addEventListener('drop',e=>{if(accountLocked){e.preventDefault();return;}if(timetableDrop(e))return;const cell=e.target.closest('.day');if(!cell||!dragData||rangeMode)return;e.preventDefault();const data=dragData;dragData=null;cell.classList.remove('dragover');const date=cell.dataset.date;
  if(data.type==='habit'){try{Core.updateHabitOccurrence(state,data.id,{date});selectedDay=date;commit('Cette occurrence a été déplacée. Le motif reste identique.');}catch(err){toast(err.message);}}
  else if(data.type==='session'){try{Core.moveSession(state,data.id,date);selectedDay=date;commit('Séance déplacée.');}catch(err){toast(err.message);}}
  else {const g=goalById(data.goalId);if(!g)return;if(!Core.inPeriod(date,g.period)){toast('Choisis un jour dans la période de travail de cet objectif.');return;}sessionForm({goalId:data.goalId,templateId:data.type==='template'?data.id:undefined,date});}
 });
 // A mouse rectangle defines one chronological range; touch and keyboard use two clicks.
-document.addEventListener('pointerdown',e=>{if(timetablePointerDown(e))return;if(!rangeMode||e.pointerType!=='mouse'||e.button!==0)return;const cell=e.target.closest('.day');if(!cell||e.target.closest('.event'))return;pointerDrag={date:cell.dataset.date,lastDate:cell.dataset.date,x:e.clientX,y:e.clientY,moved:false};});
-document.addEventListener('pointermove',e=>{if(timetablePointerMove(e))return;if(!pointerDrag||!rangeMode)return;if(Math.hypot(e.clientX-pointerDrag.x,e.clientY-pointerDrag.y)<5&&!pointerDrag.moved)return;pointerDrag.moved=true;e.preventDefault();const cell=document.elementFromPoint(e.clientX,e.clientY)?.closest('.day');if(cell)pointerDrag.lastDate=cell.dataset.date;
+document.addEventListener('pointerdown',e=>{if(accountLocked){e.preventDefault();return;}if(timetablePointerDown(e))return;if(!rangeMode||e.pointerType!=='mouse'||e.button!==0)return;const cell=e.target.closest('.day');if(!cell||e.target.closest('.event'))return;pointerDrag={date:cell.dataset.date,lastDate:cell.dataset.date,x:e.clientX,y:e.clientY,moved:false};});
+document.addEventListener('pointermove',e=>{if(accountLocked){e.preventDefault();return;}if(timetablePointerMove(e))return;if(!pointerDrag||!rangeMode)return;if(Math.hypot(e.clientX-pointerDrag.x,e.clientY-pointerDrag.y)<5&&!pointerDrag.moved)return;pointerDrag.moved=true;e.preventDefault();const cell=document.elementFromPoint(e.clientX,e.clientY)?.closest('.day');if(cell)pointerDrag.lastDate=cell.dataset.date;
  rangeMode.start=pointerDrag.date;rangeMode.end=pointerDrag.lastDate;rangeMode.candidate=Core.normalizeRange(rangeMode.start,rangeMode.end);previewRange();const box=$('#selection-rectangle');box.hidden=false;Object.assign(box.style,{left:Math.min(pointerDrag.x,e.clientX)+'px',top:Math.min(pointerDrag.y,e.clientY)+'px',width:Math.abs(e.clientX-pointerDrag.x)+'px',height:Math.abs(e.clientY-pointerDrag.y)+'px'});
 },{passive:false});
-document.addEventListener('pointerup',e=>{if(finishTimetableGesture(false,e?.pointerId))return;if(!pointerDrag)return;const moved=pointerDrag.moved;pointerDrag=null;$('#selection-rectangle').hidden=true;if(moved){suppressClick=true;render();setTimeout(()=>suppressClick=false,0);}});
+document.addEventListener('pointerup',e=>{if(accountLocked){e.preventDefault();return;}if(finishTimetableGesture(false,e?.pointerId))return;if(!pointerDrag)return;const moved=pointerDrag.moved;pointerDrag=null;$('#selection-rectangle').hidden=true;if(moved){suppressClick=true;render();setTimeout(()=>suppressClick=false,0);}});
 document.addEventListener('pointercancel',e=>{finishTimetableGesture(true,e?.pointerId);pointerDrag=null;$('#selection-rectangle').hidden=true;});
 modal.addEventListener('click',e=>{if(e.target===modal){const r=modal.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)modal.close();}});
-document.addEventListener('contextmenu',e=>{if(tab!=='goals'||rangeMode)return;const target=calendarContextTarget(e);if(target){e.preventDefault();openCalendarMenu(target);}});
+document.addEventListener('contextmenu',e=>{if(accountLocked){e.preventDefault();return;}if(tab!=='goals'||rangeMode)return;const target=calendarContextTarget(e);if(target){e.preventDefault();openCalendarMenu(target);}});
 document.addEventListener('keydown',e=>{
  if(contextMenu){if(e.key==='Escape'){e.preventDefault();closeCalendarMenu();return;}if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const buttons=Array.from($('#calendar-context-menu').querySelectorAll?.('button')||[]),i=buttons.indexOf(document.activeElement),next=e.key==='Home'?0:e.key==='End'?buttons.length-1:(i+(e.key==='ArrowDown'?1:-1)+buttons.length)%buttons.length;buttons[next]?.focus();return;}}
  if(e.key==='Escape'&&(placement||timetableGesture)){e.preventDefault();cancelPlacement();return;}
@@ -611,7 +621,29 @@ document.addEventListener('keydown',e=>{
 $('#today-label').textContent=new Date().toLocaleDateString('fr-CA',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
 if(loadIssue){$('#storage-warning').textContent=loadIssue;$('#storage-warning').hidden=false;$('#save-status').innerHTML='À exporter';}else save();
 render();
+window.RythmeApp={
+ getData:()=>JSON.parse(JSON.stringify(state)),getGuestData:()=>JSON.parse(JSON.stringify(guestDataForAccounts||state)),makeEmpty:()=>Core.validateImport(base()),validate:Core.validateImport,
+ getStorage:()=>storage,escape:E,toast,openDialog:(body)=>{openModal('Mon compte',body);modal.dataset.accountPanel='true';},isAccountDialogOpen:()=>modal.open&&modal.dataset.accountPanel==='true',
+ closeDialog:()=>modal.close(),setAccountSink:fn=>{accountSink=fn;},
+ applyAccountSnapshot(s){
+  if(!accountIdentity&&!accountLocked)guestDataForAccounts=JSON.parse(JSON.stringify(state));
+  const nextIdentity=s.user?.id||'';
+  if(nextIdentity!==accountIdentity){accountEpoch++;accountIdentity=nextIdentity;modal.close();rangeMode=null;drawerGoal=null;pointerDrag=null;dragData=null;placement=null;habitEditorId=null;timetableGesture=null;contextMenu=null;$('#calendar-context-menu').hidden=true;$('#calendar-context-menu').innerHTML='';$('#selection-rectangle').hidden=true;}
+  accountLocked=['loading','error','conflict'].includes(s.status);
+  state=Core.validateImport(s.data);loadIssue='';render();
+  $('#view').inert=accountLocked;$('.hero').inert=accountLocked;
+  const labels={loading:'Chargement du compte…',saving:'Synchronisation…',offline:'À synchroniser',conflict:'Conflit à résoudre',error:'Compte indisponible',ready:'Synchronisé'};
+  const label=(s.user||s.status==='loading')?labels[s.status]||'À synchroniser':(s.cacheError?'À exporter':'Enregistré ici');
+  $('#save-status').textContent=s.pending&&s.status==='ready'?'À synchroniser':label;
+  const warning=[s.error,s.cacheError].filter(Boolean).join(' ');$('#storage-warning').hidden=!warning;$('#storage-warning').textContent=warning;
+  $('#account-button').textContent=s.user?'Mon compte · connecté':'Mon compte';
+  $('#privacy-status').textContent=s.user?'Ton espace personnel, associé à ton compte.':'Ton espace personnel, conservé dans ce navigateur.';
+ }
+};
 })();
 </script>
+<script src="accounts.js" defer></script>
+<script src="supabase-config.js" defer></script>
+<script src="accounts-ui.js" defer></script>
 </body>
 </html>

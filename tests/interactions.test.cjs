@@ -15,7 +15,7 @@ function boot(initial,broken=false){
 }
 test('démarre avec un calendrier et une liste vide sans dépendance distante',()=>{
  const app=boot();assert.match(app.view(),/Mon calendrier/);assert.match(app.view(),/Tout commence ici/);assert.equal(app.data().goals.length,0);
- assert.doesNotMatch(html,/<script[^>]+src=|<link[^>]+href=["'](?:https?:)?\/\//);
+ assert.doesNotMatch(html,/<script[^>]+src=["\'](?:https?:)?\/\/|<link[^>]+href=["'](?:https?:)?\/\//);
 });
 test('crée un objectif et choisit sa période avec deux clics puis validation dans le calendrier',()=>{
  const app=boot();app.submit('goal',{title:'Mon <objectif>',groupId:'etudes',tags:['tech']});const id=app.data().goals[0].id;

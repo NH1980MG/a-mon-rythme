@@ -138,3 +138,32 @@ test('cocher et modifier une occurrence d’habitude reste persistant sans crée
 test('le mode exceptionnel et la fréquence personnalisée se configurent dans le groupe',()=>{
  const app=boot();app.submit('habit-group',{name:'Exception',color:'#69825a',anchorDate:'2026-10-12',patternDays:'3',mode:'once'});assert.equal(app.data().habitGroups[0].repeatEvery,null);app.submit('habit-group',{name:'Deux semaines',color:'#69825a',anchorDate:'2026-10-12',patternDays:'7',mode:'repeat',repeatCount:'2',repeatUnit:'7'});assert.equal(app.data().habitGroups[1].repeatEvery,14);assert.equal(app.data().habitGroups[1].patternDays,7);
 });
+
+test('les îlots affichent la progression des séances et la durée inclusive de la période',()=>{
+ const app=boot();app.submit('goal',{title:'Japonais',periodStart:'2026-10-01',periodEnd:'2026-10-31'});const id=app.data().goals[0].id;
+ assert.match(app.view(),/31 jours/);assert.match(app.view(),/Aucune séance/);
+ for(let i=0;i<4;i++)app.submit('session',{goalId:id,title:'Étape '+i,date:'2026-10-20',time:'09:00',duration:'30'});
+ for(const s of app.data().sessions.slice(0,3))app.click('session-done',{id:s.id},{checked:true});
+ assert.match(app.view(),/75 %/);assert.match(app.view(),/3 sur 4 séances effectuées/);
+ app.click('delete-session',{id:app.data().sessions.at(-1).id});assert.match(app.view(),/100 %/);
+});
+test('les panneaux se ferment et se rouvrent sans perdre les objectifs',()=>{
+ const app=boot();app.submit('goal',{title:'À garder'});const before=app.data();
+ app.click('toggle-panel',{panel:'goals'});assert.doesNotMatch(app.view(),/À garder/);assert.match(app.view(),/Mon calendrier/);
+ app.click('toggle-panel',{panel:'calendar'});assert.doesNotMatch(app.view(),/Mon calendrier/);assert.match(app.view(),/Ouvre un panneau/);
+ app.click('toggle-panel',{panel:'goals'});assert.match(app.view(),/À garder/);assert.deepEqual(app.data(),before);
+ app.click('toggle-panel',{panel:'calendar'});assert.match(app.view(),/Mon calendrier/);
+});
+test('la largeur des panneaux est bornée et conservée après fermeture puis réouverture',()=>{
+ const app=boot();app.listeners.change({target:{id:'panel-width',value:'65'}});
+ assert.match(app.view(),/--calendar-share:65%/);
+ app.click('toggle-panel',{panel:'calendar'});app.click('toggle-panel',{panel:'calendar'});assert.match(app.view(),/--calendar-share:65%/);
+ app.listeners.change({target:{id:'panel-width',value:'999'}});assert.match(app.view(),/--calendar-share:70%/);
+});
+test('la progression ignore les séances annulées et reste indépendante du bilan final',()=>{
+ const app=boot();app.submit('goal',{title:'Lecture'});const id=app.data().goals[0].id;
+ app.submit('session',{goalId:id,title:'Lire',date:'2026-10-20',time:'09:00',duration:'30',done:'on'});
+ app.submit('session',{goalId:id,title:'Annulée',date:'2026-10-21',time:'09:00',duration:'30'});
+ const data=app.data();data.sessions[1].cancelled=true;const next=boot(data);
+ assert.match(next.view(),/100 %/);assert.equal(next.data().goals[0].done,false);
+});
